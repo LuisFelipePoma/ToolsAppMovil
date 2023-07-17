@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tools_app/providers/providers.dart';
 
 class CalculatorButtons extends StatelessWidget {
   const CalculatorButtons({super.key});
@@ -13,7 +15,7 @@ class CalculatorButtons extends StatelessWidget {
         ),
         _RowButtons(
           colors: [Color(0xff313131), Color(0xff28968F)],
-          data: ['7', '8', '9', 'X'],
+          data: ['7', '8', '9', 'x'],
         ),
         _RowButtons(
           colors: [Color(0xff313131), Color(0xff28968F)],
@@ -69,6 +71,7 @@ class _Buttons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final calculatorProvider = Provider.of<CalculatorProvider>(context);
 
     final boxDecoration = BoxDecoration(
       borderRadius: BorderRadius.circular(30),
@@ -87,7 +90,30 @@ class _Buttons extends StatelessWidget {
             elevation: MaterialStateProperty.all(10),
             overlayColor: MaterialStateProperty.all(colorTouch),
           ),
-          onPressed: () {},
+          onPressed: () {
+            if (data == 'AC') {
+              calculatorProvider.clearPrompt();
+							calculatorProvider.isOpenParan = false;
+              return;
+            }
+            if (data == 'CE') {
+              calculatorProvider.erasePrompt();
+              return;
+            }
+            if (data == '=') {
+              calculatorProvider.calculatePrompt();
+              return;
+            }
+            if (data == '( )') {
+              calculatorProvider.isOpenParan
+                  ? calculatorProvider.setPrompt(')')
+                  : calculatorProvider.setPrompt('(');
+
+              return;
+            }
+
+            calculatorProvider.setPrompt(data);
+          },
           child: Text(data,
               style: const TextStyle(
                   color: Colors.white,
