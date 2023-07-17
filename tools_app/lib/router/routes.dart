@@ -13,7 +13,7 @@ class AppRoutes {
       screen: const HomeScreen(),
     ),
     MenuOption(
-      route: 'listviewbuilder',
+      route: 'calculator',
       icon: Icons.build_circle_sharp,
       name: 'InfinityScroll & Pull to refresh',
       screen: const CalculatorScreen(),

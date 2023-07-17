@@ -15,11 +15,13 @@ class CardTable extends StatelessWidget {
               icon: Icons.calculate_outlined,
               color: Colors.blueAccent,
               text: 'Calculadora',
+              screen: 'calculator',
             ),
             _SingleCard(
               icon: Icons.handyman_rounded,
               color: Colors.purpleAccent,
               text: 'Tool 2',
+              screen: 'home',
             ),
           ],
         ),
@@ -29,11 +31,13 @@ class CardTable extends StatelessWidget {
               icon: Icons.handyman_rounded,
               color: Colors.pinkAccent,
               text: 'Tool 3',
+              screen: 'home',
             ),
             _SingleCard(
               icon: Icons.handyman_rounded,
               color: Colors.orangeAccent,
               text: 'Tool 4',
+              screen: 'home',
             ),
           ],
         ),
@@ -43,11 +47,13 @@ class CardTable extends StatelessWidget {
               icon: Icons.handyman_rounded,
               color: Colors.amberAccent,
               text: 'Tool 5',
+              screen: 'home',
             ),
             _SingleCard(
               icon: Icons.handyman_rounded,
               color: Colors.deepPurple,
               text: 'Tool 6',
+              screen: 'home',
             ),
           ],
         ),
@@ -57,11 +63,13 @@ class CardTable extends StatelessWidget {
               icon: Icons.handyman_rounded,
               color: Colors.cyanAccent,
               text: 'Tool 7',
+              screen: 'home',
             ),
             _SingleCard(
               icon: Icons.handyman_rounded,
               color: Colors.greenAccent,
               text: 'Tool 8',
+              screen: 'home',
             ),
           ],
         ),
@@ -72,11 +80,15 @@ class CardTable extends StatelessWidget {
 
 class _SingleCard extends StatelessWidget {
   const _SingleCard(
-      {required this.icon, required this.color, required this.text});
+      {required this.icon,
+      required this.color,
+      required this.text,
+      required this.screen});
 
   final IconData icon;
   final Color color;
   final String text;
+  final String screen;
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +100,9 @@ class _SingleCard extends StatelessWidget {
           radius: 30,
           child: IconButton(
             icon: Icon(icon, size: 35, color: Colors.white),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, screen);
+            },
           ),
         ),
         const SizedBox(height: 10),

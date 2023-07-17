@@ -13,6 +13,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(
             create: (_) => ThemeProvider(isDarkmode: Preferences.isDarkmode)),
+        ChangeNotifierProvider(create: (context) => CalculatorProvider()),
       ],
       child: const MyApp(),
     ),

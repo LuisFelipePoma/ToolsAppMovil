@@ -1,36 +1,33 @@
 import 'package:flutter/material.dart';
 
 class BackgroundHome extends StatelessWidget {
-  const BackgroundHome({super.key});
+  const BackgroundHome({super.key, required this.colors});
+
+  final List<Color> colors;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Stack(
-      children: [_BackgroundTheme(size)],
+      children: [_BackgroundTheme(size, colors)],
     );
   }
 }
 
 class _BackgroundTheme extends StatelessWidget {
-  const _BackgroundTheme(this.size);
+  const _BackgroundTheme(this.size, this.colors);
+  final colors;
   // Variables
   final Size size;
   @override
   Widget build(BuildContext context) {
     // Metodos in Line
 
-    const boxDecoration = BoxDecoration(
+    final boxDecoration = BoxDecoration(
       gradient: LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
-        colors: [
-          Color(0xffe5423e),
-          // Color(0xffc1273e),
-          Color(0xff7b1332),
-          // Color(0xff4e0a30),
-          Color(0xff2b122a),
-        ],
+        colors: colors,
       ),
     );
     return Container(

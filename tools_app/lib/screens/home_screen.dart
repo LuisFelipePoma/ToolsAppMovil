@@ -13,7 +13,11 @@ class HomeScreen extends StatelessWidget {
       body: const Center(
         child: Stack(
           children: [
-            BackgroundHome(),
+            BackgroundHome(colors: [
+              Color(0xffe5423e),
+              Color(0xff7b1332),
+              Color(0xff2b122a),
+            ]),
             _HomeBody(),
           ],
         ),
