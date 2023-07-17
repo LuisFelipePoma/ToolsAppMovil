@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
         child: Stack(
           children: [
             BackgroundHome(),
+            _HomeBody(),
           ],
         ),
       ),
@@ -24,4 +25,25 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       );
+}
+
+class _HomeBody extends StatelessWidget {
+  const _HomeBody();
+
+  @override
+  Widget build(BuildContext context) {
+    return const SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
+      scrollDirection: Axis.vertical,
+      child: Column(
+        children: [
+          // Titles
+          PageTitle(),
+
+          // Card Table
+          CardTable(),
+        ],
+      ),
+    );
+  }
 }

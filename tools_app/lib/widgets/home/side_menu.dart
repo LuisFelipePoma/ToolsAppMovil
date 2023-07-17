@@ -8,9 +8,14 @@ class SideMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Opacity(
-      opacity: 0.7,
-      child: sideNav(),
+    return ClipRRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+        child: Opacity(
+          opacity: 0.7,
+          child: sideNav(),
+        ),
+      ),
     );
   }
 }
@@ -23,17 +28,9 @@ class sideNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.black38,
+      backgroundColor: Colors.black12,
       child: Stack(
         children: <Widget>[
-          // first child be the blur background
-          BackdropFilter(
-            filter: ImageFilter.blur(
-                sigmaX: 5.0,
-                sigmaY: 5.0), //this is dependent on the import statment above
-            child: Container(
-                decoration: const BoxDecoration(color: Colors.black38)),
-          ),
           ListView(
             padding: EdgeInsets.zero,
             children: [
