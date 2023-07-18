@@ -14,6 +14,7 @@ void main() async {
         ChangeNotifierProvider(
             create: (_) => ThemeProvider(isDarkmode: Preferences.isDarkmode)),
         ChangeNotifierProvider(create: (context) => CalculatorProvider()),
+        ChangeNotifierProvider(create: (context) => HistoryListProvider()),
       ],
       child: const MyApp(),
     ),

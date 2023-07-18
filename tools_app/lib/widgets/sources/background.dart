@@ -16,6 +16,7 @@ class BackgroundHome extends StatelessWidget {
 
 class _BackgroundTheme extends StatelessWidget {
   const _BackgroundTheme(this.size, this.colors);
+  // ignore: prefer_typing_uninitialized_variables
   final colors;
   // Variables
   final Size size;

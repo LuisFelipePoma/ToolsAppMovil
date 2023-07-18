@@ -15,7 +15,6 @@ class CalculatorDash extends StatelessWidget {
       child: SizedBox(
         width: size.width * 0.9,
         height: size.height * 0.8,
-        // color: Colors.black54,
         child: Column(
           children: [
             const RowScreen(),

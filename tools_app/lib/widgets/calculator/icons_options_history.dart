@@ -2,33 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tools_app/providers/providers.dart';
 
-class IconsOptions extends StatelessWidget {
-  const IconsOptions({
-    super.key,
-  });
+class IconsOptionsHistory extends StatelessWidget {
+  const IconsOptionsHistory({super.key});
 
   @override
   Widget build(BuildContext context) {
     final calculatorProvider = Provider.of<CalculatorProvider>(context);
-
+    final historyListProvider = Provider.of<HistoryListProvider>(context);
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.only(left: 40, top: 30, right: 40),
+        padding: const EdgeInsets.only(left: 10, top: 30, right: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _IconOptions(
-                function: () => Navigator.pop(context),
-                icondata: Icons.arrow_back_ios),
-            _IconOptions(
                 function: () {
                   calculatorProvider.pageController.animateToPage(
-                    1,
+                    0,
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.linear,
                   );
                 },
-                icondata: Icons.history)
+                icondata: Icons.calculate_outlined),
+            _IconOptions(
+                function: () {
+                  historyListProvider.borrarTodos();
+                },
+                icondata: Icons.delete_forever_outlined)
           ],
         ),
       ),

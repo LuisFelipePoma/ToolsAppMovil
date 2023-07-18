@@ -72,6 +72,7 @@ class _Buttons extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final calculatorProvider = Provider.of<CalculatorProvider>(context);
+    final historyListProvider = Provider.of<HistoryListProvider>(context);
 
     final boxDecoration = BoxDecoration(
       borderRadius: BorderRadius.circular(30),
@@ -90,10 +91,10 @@ class _Buttons extends StatelessWidget {
             elevation: MaterialStateProperty.all(10),
             overlayColor: MaterialStateProperty.all(colorTouch),
           ),
-          onPressed: () {
+          onPressed: () async {
             if (data == 'AC') {
               calculatorProvider.clearPrompt();
-							calculatorProvider.isOpenParan = false;
+              calculatorProvider.isOpenParan = false;
               return;
             }
             if (data == 'CE') {
@@ -101,7 +102,10 @@ class _Buttons extends StatelessWidget {
               return;
             }
             if (data == '=') {
-              calculatorProvider.calculatePrompt();
+              await calculatorProvider.calculatePrompt();
+              await historyListProvider.nuevoHistory(
+                  prompt: calculatorProvider.previousPrompt,
+                  result: calculatorProvider.result);
               return;
             }
             if (data == '( )') {

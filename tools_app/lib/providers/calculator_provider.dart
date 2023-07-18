@@ -9,6 +9,7 @@ class CalculatorProvider extends ChangeNotifier {
   PageController pageController = PageController(initialPage: 0);
 
   String prompt = '0';
+  String previousPrompt = '0';
   String result = '';
   String previousResult = '';
   bool isOpenParan = false;
@@ -40,11 +41,13 @@ class CalculatorProvider extends ChangeNotifier {
 
   calculatePrompt() {
     String expresion = prompt;
+
     // Eliminamos espacios en blanco de la expresión
     expresion = expresion.replaceAll(' ', '');
     expresion = expresion.replaceAll('x', '*');
     // Llamamos a la función auxiliar para evaluar la expresión
     previousResult = resolverExpresionMatematica(expresion).toString();
+		previousPrompt = expresion;
     result = previousResult;
     prompt = result.toString();
     notifyListeners();
