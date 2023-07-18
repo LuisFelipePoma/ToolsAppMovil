@@ -13,8 +13,8 @@ class CardTable extends StatelessWidget {
           children: [
             _SingleCard(
               icon: Icons.calculate_outlined,
-              color: Colors.blueAccent,
-              text: 'Calculadora',
+              color: Color.fromARGB(255, 67, 186, 168),
+              text: 'Calculator',
               screen: 'calculator',
             ),
             _SingleCard(

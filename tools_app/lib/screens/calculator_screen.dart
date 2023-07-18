@@ -60,18 +60,22 @@ class _CalculatorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Stack(
-      children: [
-        BackgroundHome(
-          colors: [
-            Color(0xff08bea5),
-            Color(0xff344357),
-            Color(0xff202935),
-          ],
-        ),
-        IconsOptionsDash(),
-        CalculatorDash(),
-      ],
+    return const SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      physics: BouncingScrollPhysics(),
+      child: Stack(
+        children: [
+          BackgroundHome(
+            colors: [
+              Color(0xff08bea5),
+              Color(0xff344357),
+              Color(0xff202935),
+            ],
+          ),
+          IconsOptionsDash(),
+          CalculatorDash(),
+        ],
+      ),
     );
   }
 }

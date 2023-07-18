@@ -11,7 +11,7 @@ class IconsOptionsDash extends StatelessWidget {
 
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.only(left: 40, top: 30, right: 40),
+        padding: const EdgeInsets.only(left: 30, top: 20, right: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

@@ -10,11 +10,11 @@ class CalculatorDash extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Positioned(
-      top: size.height * 0.18,
+      top: size.height * 0.16,
       left: size.width * 0.05,
       child: SizedBox(
         width: size.width * 0.9,
-        height: size.height * 0.8,
+        height: size.height * 0.9,
         child: Column(
           children: [
             const RowScreen(),

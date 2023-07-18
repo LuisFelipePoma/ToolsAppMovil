@@ -103,10 +103,14 @@ class _Buttons extends StatelessWidget {
             }
             if (data == '=') {
               await calculatorProvider.calculatePrompt();
+							calculatorProvider.isOnResult = true;
               await historyListProvider.nuevoHistory(
                   prompt: calculatorProvider.previousPrompt,
                   result: calculatorProvider.result);
               return;
+            }
+            if (data == '.') {
+              if (calculatorProvider.isOnDecimals) return;
             }
             if (data == '( )') {
               calculatorProvider.isOpenParan

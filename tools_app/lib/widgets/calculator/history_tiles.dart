@@ -46,7 +46,8 @@ class HistoryTiles extends StatelessWidget {
                   fontSize: 15,
                 ),
               ),
-              trailing: const Icon(Icons.keyboard_arrow_right),
+              trailing:
+                  const Icon(Icons.keyboard_arrow_right, color: Colors.white),
               onTap: () => _launchUrlUtils(context, history[index]),
             ),
           ),
