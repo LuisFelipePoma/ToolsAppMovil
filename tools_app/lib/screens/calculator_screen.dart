@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tools_app/providers/providers.dart';
+import 'package:tools_app/widgets/calculator/icons_options_history.dart';
 import 'package:tools_app/widgets/widgets.dart';
 
 class CalculatorScreen extends StatelessWidget {
@@ -21,8 +22,8 @@ class CalculatorScreen extends StatelessWidget {
           key: calculatorProvider.viewKey,
           controller: calculatorProvider.pageController,
           children: const [
-            CalculatorPage(),
-            HistoryPage(),
+            _CalculatorPage(),
+            _HistoryPage(),
           ],
         ),
       ),
@@ -30,21 +31,32 @@ class CalculatorScreen extends StatelessWidget {
   }
 }
 
-class HistoryPage extends StatelessWidget {
-  const HistoryPage({
-    super.key,
-  });
+class _HistoryPage extends StatelessWidget {
+  const _HistoryPage();
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final historyListProvider =
+        Provider.of<HistoryListProvider>(context, listen: false);
+    historyListProvider.cargarScans();
+    return const Stack(
+      children: [
+        BackgroundHome(
+          colors: [
+            Color(0xff08bea5),
+            Color(0xff344357),
+            Color(0xff202935),
+          ],
+        ),
+        IconsOptionsHistory(),
+        HistoryTiles(),
+      ],
+    );
   }
 }
 
-class CalculatorPage extends StatelessWidget {
-  const CalculatorPage({
-    super.key,
-  });
+class _CalculatorPage extends StatelessWidget {
+  const _CalculatorPage();
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +69,7 @@ class CalculatorPage extends StatelessWidget {
             Color(0xff202935),
           ],
         ),
-        IconsOptions(),
+        IconsOptionsDash(),
         CalculatorDash(),
       ],
     );
